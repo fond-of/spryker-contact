@@ -2,7 +2,6 @@
 namespace FondOfSpryker\Client\Contact;
 
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
-use Generated\Shared\Transfer\ContactMailResponseTransfer;
 
 /**
  * @method \FondOfSpryker\Client\Contact\ContactFactory getFactory()
@@ -15,9 +14,9 @@ interface ContactClientInterface
      *
      * @api
      *
-     * @param ContactMailRequestTransfer $contactMailResponseTransfer
+     * @param \Generated\Shared\Transfer\ContactMailRequestTransfer $contactMailResponseTransfer
      *
-     * @return ContactMailResponseTransfer
+     * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
     public function sendContactMailRequest(ContactMailRequestTransfer $contactMailResponseTransfer);
 }

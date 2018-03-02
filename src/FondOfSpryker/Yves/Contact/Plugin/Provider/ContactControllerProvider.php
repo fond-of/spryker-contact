@@ -9,16 +9,15 @@ use Silex\Application;
  */
 class ContactControllerProvider extends AbstractYvesControllerProvider
 {
-
     const CONTACTFORM_INDEX = 'contact-index';
 
     /**
      * @param \Silex\Application $app
+     *
      * @return void
      */
     protected function defineControllers(Application $app)
     {
-
         $allowedLocalesPattern = $this->getAllowedLocalesPattern();
 
         $this->createGetController('/{contact}', static::CONTACTFORM_INDEX, 'Contact', 'Index', 'index')

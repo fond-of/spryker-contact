@@ -50,7 +50,7 @@ class ContactForm extends AbstractType
     {
         $builder->add(self::FIELD_NAME, TextType::class, [
             'label' => 'Name',
-            'required' => true
+            'required' => true,
         ]);
     }
 
@@ -67,7 +67,7 @@ class ContactForm extends AbstractType
             'constraints' => [
                 new NotBlank(),
                 new Email(),
-            ]
+            ],
         ]);
     }
 
@@ -80,7 +80,7 @@ class ContactForm extends AbstractType
     {
         $builder->add(self::FIELD_PHONE, TextType::class, [
             'label' => 'Phone',
-            'required' => false
+            'required' => false,
         ]);
     }
 
@@ -93,7 +93,7 @@ class ContactForm extends AbstractType
     {
         $builder->add(self::FIELD_COMMENT, TextareaType::class, [
             'label' => 'Comment',
-            'required' => true
+            'required' => true,
         ]);
     }
 }

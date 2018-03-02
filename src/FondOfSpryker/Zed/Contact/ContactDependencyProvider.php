@@ -9,11 +9,11 @@ use Spryker\Zed\Kernel\Container;
  */
 class ContactDependencyProvider extends AbstractBundleDependencyProvider
 {
-
     const FACADE_MAIL = 'FACADE_MAIL';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
+     *
      * @return \Spryker\Zed\Kernel\Container
      */
     public function provideBusinessLayerDependencies(Container $container)

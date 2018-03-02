@@ -2,7 +2,6 @@
 namespace FondOfSpryker\Zed\Contact\Communication\Controller;
 
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
-use Generated\Shared\Transfer\ContactMailResponseTransfer;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 
 /**
@@ -11,8 +10,9 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 class GatewayController extends AbstractGatewayController
 {
     /**
-     * @param ContactMailRequestTransfer $contactTransfer
-     * @return ContactMailResponseTransfer
+     * @param \Generated\Shared\Transfer\ContactMailRequestTransfer $contactTransfer
+     *
+     * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
     public function sendContactMailAction(ContactMailRequestTransfer $contactTransfer)
     {

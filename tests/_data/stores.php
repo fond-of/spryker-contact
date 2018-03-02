@@ -13,5 +13,5 @@ return [
         'countries' => ['DE'],
         'currencyIsoCode' => 'EUR',
         'currencyIsoCodes' => ['EUR'],
-    ]
+    ],
 ];

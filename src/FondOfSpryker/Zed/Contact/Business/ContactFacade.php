@@ -2,7 +2,6 @@
 namespace FondOfSpryker\Zed\Contact\Business;
 
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
-use Generated\Shared\Transfer\ContactMailResponseTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -10,10 +9,10 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  */
 class ContactFacade extends AbstractFacade implements ContactFacadeInterface
 {
-
     /**
-     * @param ContactMailRequestTransfer $contactMailRequest
-     * @return ContactMailResponseTransfer
+     * @param \Generated\Shared\Transfer\ContactMailRequestTransfer $contactMailRequest
+     *
+     * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
     public function sendContactEmail(ContactMailRequestTransfer $contactMailRequest)
     {

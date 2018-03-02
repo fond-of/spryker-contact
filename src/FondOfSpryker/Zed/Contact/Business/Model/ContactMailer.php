@@ -1,11 +1,11 @@
 <?php
 namespace FondOfSpryker\Zed\Contact\Business\Model;
 
+use FondOfSpryker\Zed\Contact\Communication\Plugin\Mail\ContactMailTypePlugin;
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
 use Generated\Shared\Transfer\ContactMailResponseTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\MailTransfer;
-use FondOfSpryker\Zed\Contact\Communication\Plugin\Mail\ContactMailTypePlugin;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
 
 /**
@@ -13,23 +13,25 @@ use Spryker\Zed\Mail\Business\MailFacadeInterface;
  */
 class ContactMailer
 {
-
     /**
-     * @var MailFacadeInterface
+     * @var \Spryker\Zed\Mail\Business\MailFacadeInterface
      */
     private $mailFacade;
 
     /**
      * @author mnoerenberg
-     * @param MailFacadeInterface $mailFacade
+     *
+     * @param \Spryker\Zed\Mail\Business\MailFacadeInterface $mailFacade
      */
-    public function __construct(MailFacadeInterface $mailFacade) {
+    public function __construct(MailFacadeInterface $mailFacade)
+    {
         $this->mailFacade = $mailFacade;
     }
 
     /**
-     * @param ContactMailRequestTransfer $contactMailRequest
-     * @return ContactMailResponseTransfer
+     * @param \Generated\Shared\Transfer\ContactMailRequestTransfer $contactMailRequest
+     *
+     * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
     public function sendContactMail(ContactMailRequestTransfer $contactMailRequest)
     {

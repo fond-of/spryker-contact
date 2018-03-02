@@ -9,7 +9,6 @@ use Spryker\Yves\Kernel\AbstractFactory;
  */
 class ContactFactory extends AbstractFactory
 {
-
     /**
      * @return \FondOfSpryker\Yves\Contact\Form\FormFactory
      */

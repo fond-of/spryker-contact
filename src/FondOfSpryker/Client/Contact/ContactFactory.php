@@ -10,7 +10,7 @@ use Spryker\Client\Kernel\AbstractFactory;
 class ContactFactory extends AbstractFactory
 {
     /**
-     * @return ContactStub
+     * @return \FondOfSpryker\Client\Contact\Zed\ContactStub
      */
     public function createContactStub()
     {

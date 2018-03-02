@@ -8,10 +8,10 @@ use Spryker\Zed\Mail\Dependency\Plugin\MailTypePluginInterface;
 /**
  * @author mnoerenberg
  * @method FondOfSpryker\Zed\Contact\ContactConfig getConfig()
+ * @method \FondOfSpryker\Zed\Contact\Business\ContactFacade getFacade()
  */
 class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInterface
 {
-
     const MAIL_TYPE = 'contact mail';
 
     /**

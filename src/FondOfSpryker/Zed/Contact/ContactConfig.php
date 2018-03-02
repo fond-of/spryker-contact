@@ -8,7 +8,6 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
  */
 class ContactConfig extends AbstractBundleConfig
 {
-
     private const CONTACT_EMAIL = 'markus.noerenberg@fondof.de';
 
     /**

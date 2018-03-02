@@ -9,7 +9,6 @@ use Spryker\Client\Kernel\Container;
  */
 class ContactDependencyProvider extends AbstractDependencyProvider
 {
-
     const SERVICE_ZED = 'zed_service';
 
     /**

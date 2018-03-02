@@ -9,7 +9,6 @@ use Spryker\Yves\Kernel\AbstractFactory;
  */
 class FormFactory extends AbstractFactory
 {
-
     /**
      * @return \Symfony\Component\Form\FormFactory
      */

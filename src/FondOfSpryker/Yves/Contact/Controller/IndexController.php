@@ -1,8 +1,8 @@
 <?php
 namespace FondOfSpryker\Yves\Contact\Controller;
 
-use Generated\Shared\Transfer\ContactMailRequestTransfer;
 use FondOfSpryker\Yves\Contact\Form\ContactForm;
+use Generated\Shared\Transfer\ContactMailRequestTransfer;
 use Spryker\Yves\Kernel\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,9 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class IndexController extends AbstractController
 {
-
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
+     *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function indexAction(Request $request)
@@ -32,12 +32,12 @@ class IndexController extends AbstractController
             $contactMailRequest->setLocale($this->getLocale());
 
             $contactMailResponse = $this->getClient()->sendContactMailRequest($contactMailRequest);
-            $success  = $contactMailResponse->getIsSuccess();
+            $success = $contactMailResponse->getIsSuccess();
         }
 
         return $this->viewResponse([
             'contactForm' => $contactForm->createView(),
-            'success' => $success
+            'success' => $success,
         ]);
     }
 }
