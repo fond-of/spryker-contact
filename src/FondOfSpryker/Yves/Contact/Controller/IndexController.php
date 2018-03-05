@@ -23,7 +23,7 @@ class IndexController extends AbstractController
         $contactForm = $this->getFactory()->getFormFactory()->createContactForm()->handleRequest($request);
 
         $success = null;
-        if ($contactForm->isValid()) {
+        if ($contactForm->isValid() && empty($contactForm->getData()[ContactForm::FIELD_ANTI_SPAM])) {
             $contactMailRequest = new ContactMailRequestTransfer();
             $contactMailRequest->setComment($contactForm->getData()[ContactForm::FIELD_COMMENT]);
             $contactMailRequest->setEmail($contactForm->getData()[ContactForm::FIELD_MAIL]);

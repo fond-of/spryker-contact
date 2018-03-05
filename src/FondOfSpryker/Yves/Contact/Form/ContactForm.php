@@ -18,6 +18,7 @@ class ContactForm extends AbstractType
     const FIELD_MAIL = 'mail';
     const FIELD_PHONE = 'phone';
     const FIELD_COMMENT = 'comment';
+    const FIELD_ANTI_SPAM = 'anti';
 
     /**
      * @return string
@@ -39,6 +40,7 @@ class ContactForm extends AbstractType
         $this->addMailField($builder);
         $this->addPhoneField($builder);
         $this->addCommentField($builder);
+        $this->addAntiSpamField($builder);
     }
 
     /**
@@ -94,6 +96,19 @@ class ContactForm extends AbstractType
         $builder->add(self::FIELD_COMMENT, TextareaType::class, [
             'label' => 'Comment',
             'required' => true,
+        ]);
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return void
+     */
+    protected function addAntiSpamField(FormBuilderInterface $builder)
+    {
+        $builder->add(self::FIELD_ANTI_SPAM, TextType::class, [
+            'label' => '',
+            'required' => false,
         ]);
     }
 }

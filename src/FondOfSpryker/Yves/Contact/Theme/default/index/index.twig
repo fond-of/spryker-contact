@@ -5,22 +5,15 @@
         <div class="small-12 columns">
             <h2>{{ 'contact.form.headline' | trans }}</h2>
 
-            {% if success != null %}
+            {% if success == true %}
                 <div class="callout">
-                    {% if success == true %}
-                        <div class="__message">
-                            <div class="callout success">{{ 'contact.form.success' | trans }}</div>
-                        </div>
-                    {% elseif success == false %}
-                        <div class="__message">
-                            <div class="callout alert">{{ 'contact.form.error' | trans }}</div>
-                        </div>
-                    {% endif %}
+                    <div class="__message">
+                        <div class="callout success">{{ 'contact.form.success' | trans }}</div>
+                    </div>
                 </div>
             {% endif %}
         </div>
     </div>
-
 
     <div class="row">
         <div class="small-8 small-centered columns">
@@ -57,6 +50,14 @@
                         </label>
                     </div>
                 </div>
+                <div class="row hide">
+                    <div class="small-12 columns">
+                        <label>
+                            {{ form_widget(contactForm.anti) }}
+                        </label>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="small-6 columns text-left">
                         {{ 'contact.form.help.placeholder' | trans }}

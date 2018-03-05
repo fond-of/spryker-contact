@@ -7,7 +7,7 @@ use Spryker\Zed\Mail\Dependency\Plugin\MailTypePluginInterface;
 
 /**
  * @author mnoerenberg
- * @method FondOfSpryker\Zed\Contact\ContactConfig getConfig()
+ * @method \FondOfSpryker\Zed\Contact\ContactConfig getConfig()
  * @method \FondOfSpryker\Zed\Contact\Business\ContactFacade getFacade()
  */
 class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInterface
@@ -55,7 +55,7 @@ class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInte
      */
     protected function setSubject(MailBuilderInterface $mailBuilder)
     {
-        $mailBuilder->setSubject('mail.contact.subject');
+        $mailBuilder->setSubject('contact.mail.subject');
         return $this;
     }
 
@@ -88,7 +88,7 @@ class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInte
      */
     protected function setSender(MailBuilderInterface $mailBuilder)
     {
-        $mailBuilder->setSender('mail.sender.email', 'mail.sender.name');
+        $mailBuilder->setSender($mailBuilder->getMailTransfer()->getContactMailRequest()->getEmail(), $mailBuilder->getMailTransfer()->getContactMailRequest()->getName());
         return $this;
     }
 }

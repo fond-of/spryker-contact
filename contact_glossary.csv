@@ -1,0 +1,28 @@
+contact.form.headline,Kontaktieren Sie uns,de_DE
+contact.form.headline,Contact us,en_US
+contact.form.success,Ihre Anfrage wurde übertragen. Wir werden diese umgehend bearbeiten und uns gegebenenfalls mit Ihnen in Verbindung setzen. Vielen Dank!,de_DE
+contact.form.success,Your inquiry was submitted and will be responded to as soon as possible. Thank you for contacting us. Vielen Dank!,en_US
+contact.form.name,Name*,de_DE
+contact.form.name,Name*,en_US
+contact.form.mail,Email*,de_DE
+contact.form.mail,Email*,en_US
+contact.form.phone,Telefon,de_DE
+contact.form.phone,Telephone,en_US
+contact.form.comment,Kommentar,de_DE
+contact.form.comment,Comment,en_US
+contact.form.help.placeholder,* Pflichtfeld,de_DE
+contact.form.help.placeholder,* Required ,en_US
+contact.form.footer.text,Image material requests to rebecca.esser@fondofbags.com.,en_US
+contact.form.footer.text,Für Presse-/Bildmaterial wende Dich bitte direkt an rebecca.esser@fondofbags.com.,de_DE
+contact.form.submit,Absenden,de_DE
+contact.form.submit,Submit,en_US
+contact.mail.subject,Kontaktformular,de_DE
+contact.mail.subject,Contact form,en_US
+contact.mail.name,Name,de_DE
+contact.mail.name,Name,en_US
+contact.mail.phone,Telefon,de_DE
+contact.mail.phone,Phone,en_US
+contact.mail.comment,Kommentar,de_DE
+contact.mail.comment,Comment,en_US
+contact.mail.mail,Mail,de_DE
+contact.mail.mail,Mail,en_US
