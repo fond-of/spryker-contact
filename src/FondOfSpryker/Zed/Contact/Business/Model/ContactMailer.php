@@ -1,4 +1,5 @@
 <?php
+
 namespace FondOfSpryker\Zed\Contact\Business\Model;
 
 use FondOfSpryker\Zed\Contact\Communication\Plugin\Mail\ContactMailTypePlugin;
@@ -6,11 +7,10 @@ use Generated\Shared\Transfer\ContactMailRequestTransfer;
 use Generated\Shared\Transfer\ContactMailResponseTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\MailTransfer;
+use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
+use Throwable;
 
-/**
- * @author mnoerenberg
- */
 class ContactMailer
 {
     /**
@@ -19,8 +19,6 @@ class ContactMailer
     private $mailFacade;
 
     /**
-     * @author mnoerenberg
-     *
      * @param \Spryker\Zed\Mail\Business\MailFacadeInterface $mailFacade
      */
     public function __construct(MailFacadeInterface $mailFacade)
@@ -31,22 +29,57 @@ class ContactMailer
     /**
      * @param \Generated\Shared\Transfer\ContactMailRequestTransfer $contactMailRequest
      *
+     * @throws \Throwable
+     *
      * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
     public function sendContactMail(ContactMailRequestTransfer $contactMailRequest)
     {
-        $localTransfer = new LocaleTransfer();
-        $localTransfer->setLocaleName($contactMailRequest->requireLocale()->getLocale());
-
-        $mailTransfer = new MailTransfer();
-        $mailTransfer->setType(ContactMailTypePlugin::MAIL_TYPE);
-        $mailTransfer->setLocale($localTransfer);
-        $mailTransfer->setContactMailRequest($contactMailRequest);
-        $this->mailFacade->handleMail($mailTransfer);
+        $localTransfer = $this->createLocaleTransfer($contactMailRequest->getLocale());
+        $mailTransfer = $this->createMailTransfer($contactMailRequest, $localTransfer);
 
         $response = new ContactMailResponseTransfer();
-        $response->setIsSuccess(true);
+        try {
+            $this->mailFacade->handleMail($mailTransfer);
+            $response->setIsSuccess(true);
+        } catch (Throwable $throwable) {
+            if (!Environment::isProduction()) {
+                throw $throwable;
+            }
+
+            $response->setIsSuccess(false);
+            $response->setErrorMessage($throwable->getMessage());
+        }
 
         return $response;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ContactMailRequestTransfer $contactMailRequest
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     *
+     * @return \Generated\Shared\Transfer\MailTransfer
+     */
+    protected function createMailTransfer(ContactMailRequestTransfer $contactMailRequest, LocaleTransfer $localeTransfer): MailTransfer
+    {
+        $mailTransfer = new MailTransfer();
+        $mailTransfer->setType(ContactMailTypePlugin::MAIL_TYPE);
+        $mailTransfer->setLocale($localeTransfer);
+        $mailTransfer->setContactMailRequest($contactMailRequest);
+
+        return $mailTransfer;
+    }
+
+    /**
+     * @param string $locale
+     *
+     * @return \Generated\Shared\Transfer\LocaleTransfer
+     */
+    protected function createLocaleTransfer(string $locale): LocaleTransfer
+    {
+        $localTransfer = new LocaleTransfer();
+        $localTransfer->setLocaleName($locale);
+
+        return $localTransfer;
     }
 }

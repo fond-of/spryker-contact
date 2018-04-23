@@ -1,7 +1,9 @@
 <?php
+
 namespace FondOfSpryker\Zed\Contact\Business;
 
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
+use Generated\Shared\Transfer\ContactMailResponseTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -14,7 +16,7 @@ class ContactFacade extends AbstractFacade implements ContactFacadeInterface
      *
      * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
-    public function sendContactEmail(ContactMailRequestTransfer $contactMailRequest)
+    public function sendContactEmail(ContactMailRequestTransfer $contactMailRequest): ContactMailResponseTransfer
     {
         return $this->getFactory()->createContactMailer()->sendContactMail($contactMailRequest);
     }

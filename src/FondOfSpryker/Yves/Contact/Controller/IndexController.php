@@ -1,15 +1,16 @@
 <?php
+
 namespace FondOfSpryker\Yves\Contact\Controller;
 
 use FondOfSpryker\Yves\Contact\Form\ContactForm;
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
 use Spryker\Yves\Kernel\Controller\AbstractController;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \FondOfSpryker\Yves\Contact\ContactFactory getFactory()
  * @method \FondOfSpryker\Client\Contact\ContactClientInterface getClient()
- * @author mnoerenberg
  */
 class IndexController extends AbstractController
 {
@@ -20,24 +21,47 @@ class IndexController extends AbstractController
      */
     public function indexAction(Request $request)
     {
-        $contactForm = $this->getFactory()->getFormFactory()->createContactForm()->handleRequest($request);
+        $form = $this->getFactory()->getFormFactory()->createContactForm()->handleRequest($request);
 
         $success = null;
-        if ($contactForm->isValid() && empty($contactForm->getData()[ContactForm::FIELD_ANTI_SPAM])) {
-            $contactMailRequest = new ContactMailRequestTransfer();
-            $contactMailRequest->setComment($contactForm->getData()[ContactForm::FIELD_COMMENT]);
-            $contactMailRequest->setEmail($contactForm->getData()[ContactForm::FIELD_MAIL]);
-            $contactMailRequest->setName($contactForm->getData()[ContactForm::FIELD_NAME]);
-            $contactMailRequest->setPhone($contactForm->getData()[ContactForm::FIELD_PHONE]);
-            $contactMailRequest->setLocale($this->getLocale());
-
-            $contactMailResponse = $this->getClient()->sendContactMailRequest($contactMailRequest);
-            $success = $contactMailResponse->getIsSuccess();
+        if ($this->isFormValid($form)) {
+            $request = $this->createContactMailRequestTransfer($form);
+            $response = $this->getClient()->sendContactMailRequest($request);
+            $success = $response->getIsSuccess();
         }
 
-        return $this->viewResponse([
-            'contactForm' => $contactForm->createView(),
-            'success' => $success,
-        ]);
+        return $this->viewResponse(
+            [
+                'contactForm' => $form->createView(),
+                'success' => $success,
+            ]
+        );
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormInterface $form
+     *
+     * @return \Generated\Shared\Transfer\ContactMailRequestTransfer
+     */
+    protected function createContactMailRequestTransfer(FormInterface $form): ContactMailRequestTransfer
+    {
+        $contactMailRequest = new ContactMailRequestTransfer();
+        $contactMailRequest->setComment($form->getData()[ContactForm::FIELD_COMMENT]);
+        $contactMailRequest->setMail($form->getData()[ContactForm::FIELD_MAIL]);
+        $contactMailRequest->setName($form->getData()[ContactForm::FIELD_NAME]);
+        $contactMailRequest->setPhone($form->getData()[ContactForm::FIELD_PHONE]);
+        $contactMailRequest->setLocale($this->getLocale());
+
+        return $contactMailRequest;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormInterface $form
+     *
+     * @return bool
+     */
+    protected function isFormValid(FormInterface $form): bool
+    {
+        return $form->isValid() && empty($form->getData()[ContactForm::FIELD_ANTI_SPAM]);
     }
 }

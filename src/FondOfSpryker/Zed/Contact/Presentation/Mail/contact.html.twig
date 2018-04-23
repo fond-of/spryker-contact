@@ -1,4 +1,18 @@
-{{ 'contact.mail.name' | trans }}: {{ mail.contactmailtequest.name }}\n
-{{ 'contact.mail.mail' | trans }}: {{ mail.contactmailtequest.mail }}\n
-{{ 'contact.mail.phone' | trans }}: {{ mail.contactmailtequest.phone }}\n
-{{ 'contact.mail.comment' | trans }}: {{ mail.contactmailtequest.comment }}
+<div>
+    <div>
+        <b>{{ 'contact.mail.name' | trans }}</b><br>
+        {{ mail.contactmailrequest.name }}
+    </div><br>
+    <div>
+        <b>{{ 'contact.mail.mail' | trans }}</b><br>
+        {{ mail.contactmailrequest.mail }}
+    </div><br>
+    <div>
+        <b>{{ 'contact.mail.phone' | trans }}</b><br>
+        {{ mail.contactmailrequest.phone }}
+    </div><br>
+    <div>
+        <b>{{ 'contact.mail.comment' | trans }}</b><br>
+        {{ mail.contactmailrequest.comment }}
+    </div><br>
+</div>

@@ -9,7 +9,6 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
  */
 class ContactMailResponseTransfer extends AbstractTransfer
 {
-
     /**
      * @var bool
      */

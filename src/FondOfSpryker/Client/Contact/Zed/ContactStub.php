@@ -1,12 +1,11 @@
 <?php
+
 namespace FondOfSpryker\Client\Contact\Zed;
 
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
+use Generated\Shared\Transfer\ContactMailResponseTransfer;
 use Spryker\Client\ZedRequest\ZedRequestClient;
 
-/**
- * @author mnoerenberg
- */
 class ContactStub implements ContactStubInterface
 {
     /**
@@ -15,8 +14,6 @@ class ContactStub implements ContactStubInterface
     private $zedRequestClient;
 
     /**
-     * @author mnoerenberg
-     *
      * @param \Spryker\Client\ZedRequest\ZedRequestClient $zedRequestClient
      */
     public function __construct(ZedRequestClient $zedRequestClient)
@@ -29,7 +26,7 @@ class ContactStub implements ContactStubInterface
      *
      * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
-    public function sendContactMailRequest(ContactMailRequestTransfer $contactMailRequestTransfer)
+    public function sendContactMailRequest(ContactMailRequestTransfer $contactMailRequestTransfer): ContactMailResponseTransfer
     {
         return $this->zedRequestClient->call('/contact/gateway/send-contact-mail', $contactMailRequestTransfer);
     }

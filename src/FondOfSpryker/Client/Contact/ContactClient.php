@@ -1,7 +1,9 @@
 <?php
+
 namespace FondOfSpryker\Client\Contact;
 
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
+use Generated\Shared\Transfer\ContactMailResponseTransfer;
 use Spryker\Client\Kernel\AbstractClient;
 
 /**
@@ -10,15 +12,11 @@ use Spryker\Client\Kernel\AbstractClient;
 class ContactClient extends AbstractClient implements ContactClientInterface
 {
     /**
-     * {@inheritdoc}
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\ContactMailRequestTransfer $contactTransfer
+     * @param \Generated\Shared\Transfer\ContactMailRequestTransfer $contactMailResponseTransfer
      *
      * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
-    public function sendContactMailRequest(ContactMailRequestTransfer $contactMailResponseTransfer)
+    public function sendContactMailRequest(ContactMailRequestTransfer $contactMailResponseTransfer): ContactMailResponseTransfer
     {
         return $this->getFactory()->createContactStub()->sendContactMailRequest($contactMailResponseTransfer);
     }

@@ -1,12 +1,10 @@
 <?php
+
 namespace FondOfSpryker\Zed\Contact;
 
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
-/**
- * @author mnoerenberg
- */
 class ContactDependencyProvider extends AbstractBundleDependencyProvider
 {
     const FACADE_MAIL = 'FACADE_MAIL';
@@ -16,7 +14,19 @@ class ContactDependencyProvider extends AbstractBundleDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideBusinessLayerDependencies(Container $container): Container
+    {
+        $container = $this->provideMailFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function provideMailFacade(Container $container): Container
     {
         $container[static::FACADE_MAIL] = function (Container $container) {
             return $container->getLocator()->mail()->facade();

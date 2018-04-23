@@ -1,20 +1,17 @@
 <?php
+
 namespace FondOfSpryker\Zed\Contact;
 
+use FondOfSpryker\Shared\Contact\ContactConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
-/**
- * @author mnoerenberg
- */
 class ContactConfig extends AbstractBundleConfig
 {
-    private const CONTACT_EMAIL = 'markus.noerenberg@fondof.de';
-
     /**
      * @return string
      */
-    public function getContactMail()
+    public function getContactMail(): string
     {
-        return self::CONTACT_EMAIL;
+        return $this->get(ContactConstants::CONTACT_FORM_MAIL_RECEIVER);
     }
 }

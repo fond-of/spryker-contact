@@ -4,21 +4,19 @@ namespace FondOfSpryker\Zed\Contact\Business\Model;
 
 use Codeception\Test\Unit;
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
 
 /**
  * @author mnoerenberg
  */
 class ContactMailerTest extends Unit
 {
-
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject
      */
     protected $mailFacadeMock;
 
     /**
-     * @var ContactMailer
+     * @var \FondOfSpryker\Zed\Contact\Business\Model\ContactMailer
      */
     protected $contactMailer;
 
@@ -28,7 +26,7 @@ class ContactMailerTest extends Unit
     protected $contactMailRequestTransferMock;
 
     /**
-     * @var vfsStreamDirectory
+     * @var \org\bovigo\vfs\vfsStreamDirectory
      */
     protected $vfsStreamDirectory;
 
@@ -37,17 +35,21 @@ class ContactMailerTest extends Unit
      */
     protected function _before()
     {
-        $this->vfsStreamDirectory = vfsStream::setup('root', null, [
+        $this->vfsStreamDirectory = vfsStream::setup(
+            'root',
+            null,
+            [
             'config' => [
                 'Shared' => [
-                    'stores.php' => file_get_contents(codecept_data_dir('stores.php'))
+                    'stores.php' => file_get_contents(codecept_data_dir('stores.php')),
                 ],
             ],
-        ]);
+            ]
+        );
 
-       $this->mailFacadeMock = $this->getMockBuilder('\Spryker\Zed\Mail\Business\MailFacade')
+        $this->mailFacadeMock = $this->getMockBuilder('\Spryker\Zed\Mail\Business\MailFacadeInterface')
             ->disableOriginalConstructor()
-            ->setMethods(['handleMail'])
+            ->setMethods(['handleMail', 'sendMail'])
             ->getMock();
 
         $this->contactMailRequestTransferMock = $this->getMockBuilder('\Generated\Shared\Transfer\ContactMailRequestTransfer')
@@ -55,7 +57,9 @@ class ContactMailerTest extends Unit
             ->setMethods(['getLocale'])
             ->getMock();
 
-       $this->contactMailer = new ContactMailer($this->mailFacadeMock);
+        $this->contactMailRequestTransferMock->method('getLocale')->willReturn('de');
+
+        $this->contactMailer = new ContactMailer($this->mailFacadeMock);
     }
 
     /**
@@ -74,8 +78,8 @@ class ContactMailerTest extends Unit
      */
     public function testSendContactMailWasSuccessfull()
     {
-       $contactMailResponseTransfer = $this->contactMailer->sendContactMail($this->contactMailRequestTransferMock);
-       $this->assertInstanceOf('Generated\Shared\Transfer\ContactMailResponseTransfer', $contactMailResponseTransfer);
-       $this->assertTrue($contactMailResponseTransfer->getIsSuccess());
+        $contactMailResponseTransfer = $this->contactMailer->sendContactMail($this->contactMailRequestTransferMock);
+        $this->assertInstanceOf('\Generated\Shared\Transfer\ContactMailResponseTransfer', $contactMailResponseTransfer);
+        $this->assertTrue($contactMailResponseTransfer->getIsSuccess());
     }
 }

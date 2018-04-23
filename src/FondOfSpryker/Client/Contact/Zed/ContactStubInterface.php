@@ -1,11 +1,10 @@
 <?php
+
 namespace FondOfSpryker\Client\Contact\Zed;
 
 use Generated\Shared\Transfer\ContactMailRequestTransfer;
+use Generated\Shared\Transfer\ContactMailResponseTransfer;
 
-/**
- * @author mnoerenberg
- */
 interface ContactStubInterface
 {
     /**
@@ -13,5 +12,5 @@ interface ContactStubInterface
      *
      * @return \Generated\Shared\Transfer\ContactMailResponseTransfer
      */
-    public function sendContactMailRequest(ContactMailRequestTransfer $contactMailRequestTransfer);
+    public function sendContactMailRequest(ContactMailRequestTransfer $contactMailRequestTransfer): ContactMailResponseTransfer;
 }

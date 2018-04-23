@@ -6,7 +6,7 @@
     <transfer name="ContactMailRequest">
         <property name="name" type="string" />
         <property name="phone" type="string" />
-        <property name="email" type="string" />
+        <property name="mail" type="string" />
         <property name="comment" type="string" />
         <property name="locale" type="string" />
     </transfer>

@@ -1,18 +1,4 @@
-<div>
-    <div>
-        <b>{{ 'contact.mail.name' | trans }}</b><br>
-        {{ mail.contactmailtequest.name }}
-    </div>
-    <div>
-        <b>{{ 'contact.mail.mail' | trans }}</b><br>
-        {{ mail.contactmailtequest.mail }}
-    </div>
-    <div>
-        <b>{{ 'contact.mail.phone' | trans }}</b><br>
-        {{ mail.contactmailtequest.phone }}
-    </div>
-    <div>
-        <b>{{ 'contact.mail.comment' | trans }}</b><br>
-        {{ mail.contactmailtequest.comment }}
-    </div>
-</div>
+{{ 'contact.mail.name' | trans }}: {{ mail.contactmailrequest.name }}{{ "\r\n"|raw }}
+{{ 'contact.mail.mail' | trans }}: {{ mail.contactmailrequest.mail }}{{ "\r\n"|raw }}
+{{ 'contact.mail.phone' | trans }}: {{ mail.contactmailrequest.phone }}{{ "\r\n"|raw }}
+{{ 'contact.mail.comment' | trans }}: {{ mail.contactmailrequest.comment }}{{ "\r\n"|raw }}

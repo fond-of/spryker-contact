@@ -1,4 +1,5 @@
 <?php
+
 namespace FondOfSpryker\Yves\Contact\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -9,16 +10,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-/**
- * @author mnoerenberg
- */
 class ContactForm extends AbstractType
 {
-    const FIELD_NAME = 'name';
-    const FIELD_MAIL = 'mail';
-    const FIELD_PHONE = 'phone';
-    const FIELD_COMMENT = 'comment';
-    const FIELD_ANTI_SPAM = 'anti';
+    public const FIELD_NAME = 'name';
+    public const FIELD_MAIL = 'mail';
+    public const FIELD_PHONE = 'phone';
+    public const FIELD_COMMENT = 'comment';
+    public const FIELD_ANTI_SPAM = 'email';
 
     /**
      * @return string
@@ -30,11 +28,11 @@ class ContactForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array $options
+     * @param string[] $options
      *
      * @return void
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $this->addNameField($builder);
         $this->addMailField($builder);
@@ -48,12 +46,16 @@ class ContactForm extends AbstractType
      *
      * @return void
      */
-    protected function addNameField(FormBuilderInterface $builder)
+    protected function addNameField(FormBuilderInterface $builder): void
     {
-        $builder->add(self::FIELD_NAME, TextType::class, [
-            'label' => 'Name',
-            'required' => true,
-        ]);
+        $builder->add(
+            self::FIELD_NAME,
+            TextType::class,
+            [
+                'label' => 'Name',
+                'required' => true,
+            ]
+        );
     }
 
     /**
@@ -61,16 +63,20 @@ class ContactForm extends AbstractType
      *
      * @return void
      */
-    protected function addMailField(FormBuilderInterface $builder)
+    protected function addMailField(FormBuilderInterface $builder): void
     {
-        $builder->add(self::FIELD_MAIL, EmailType::class, [
+        $builder->add(
+            self::FIELD_MAIL,
+            EmailType::class,
+            [
             'label' => 'Mail',
             'required' => true,
             'constraints' => [
                 new NotBlank(),
                 new Email(),
             ],
-        ]);
+            ]
+        );
     }
 
     /**
@@ -78,12 +84,16 @@ class ContactForm extends AbstractType
      *
      * @return void
      */
-    protected function addPhoneField(FormBuilderInterface $builder)
+    protected function addPhoneField(FormBuilderInterface $builder): void
     {
-        $builder->add(self::FIELD_PHONE, TextType::class, [
-            'label' => 'Phone',
-            'required' => false,
-        ]);
+        $builder->add(
+            self::FIELD_PHONE,
+            TextType::class,
+            [
+                'label' => 'Phone',
+                'required' => false,
+            ]
+        );
     }
 
     /**
@@ -91,12 +101,16 @@ class ContactForm extends AbstractType
      *
      * @return void
      */
-    protected function addCommentField(FormBuilderInterface $builder)
+    protected function addCommentField(FormBuilderInterface $builder): void
     {
-        $builder->add(self::FIELD_COMMENT, TextareaType::class, [
-            'label' => 'Comment',
-            'required' => true,
-        ]);
+        $builder->add(
+            self::FIELD_COMMENT,
+            TextareaType::class,
+            [
+                'label' => 'Comment',
+                'required' => true,
+            ]
+        );
     }
 
     /**
@@ -104,11 +118,15 @@ class ContactForm extends AbstractType
      *
      * @return void
      */
-    protected function addAntiSpamField(FormBuilderInterface $builder)
+    protected function addAntiSpamField(FormBuilderInterface $builder): void
     {
-        $builder->add(self::FIELD_ANTI_SPAM, TextType::class, [
-            'label' => '',
-            'required' => false,
-        ]);
+        $builder->add(
+            self::FIELD_ANTI_SPAM,
+            TextType::class,
+            [
+                'label' => '',
+                'required' => false,
+            ]
+        );
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace FondOfSpryker\Zed\Contact\Communication\Controller;
 
 use Generated\Shared\Transfer\ContactMailRequestTransfer;

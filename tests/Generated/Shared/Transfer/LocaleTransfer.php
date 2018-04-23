@@ -9,7 +9,6 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
  */
 class LocaleTransfer extends AbstractTransfer
 {
-
     /**
      * @var string
      */
