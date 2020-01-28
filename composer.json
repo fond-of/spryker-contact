@@ -21,9 +21,9 @@
     }
   ],
   "require": {
-    "php": ">=7.1",
-    "spryker/mail": "^4.1.1",
-    "spryker/twig": "^3.7.2"
+    "php": ">=7.2",
+    "spryker/mail": "^4.2.0",
+    "spryker/twig": "^3.8.2"
   },
   "require-dev": {
     "spryker/code-sniffer": "^0.14.7",
