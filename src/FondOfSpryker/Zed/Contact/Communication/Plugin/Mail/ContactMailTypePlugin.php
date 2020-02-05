@@ -12,7 +12,7 @@ use Spryker\Zed\Mail\Dependency\Plugin\MailTypePluginInterface;
  */
 class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInterface
 {
-    const MAIL_TYPE = 'contact mail';
+    public const MAIL_TYPE = 'contact mail';
 
     /**
      * @return string
@@ -42,9 +42,10 @@ class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInte
      *
      * @return $this
      */
-    protected function setRecipient(MailBuilderInterface $mailBuilder): ContactMailTypePlugin
+    protected function setRecipient(MailBuilderInterface $mailBuilder)
     {
         $mailBuilder->addRecipient($this->getConfig()->getContactMail(), '');
+
         return $this;
     }
 
@@ -53,9 +54,10 @@ class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInte
      *
      * @return $this
      */
-    protected function setSubject(MailBuilderInterface $mailBuilder): ContactMailTypePlugin
+    protected function setSubject(MailBuilderInterface $mailBuilder)
     {
         $mailBuilder->setSubject('contact.mail.subject');
+
         return $this;
     }
 
@@ -64,9 +66,10 @@ class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInte
      *
      * @return $this
      */
-    protected function setHtmlTemplate(MailBuilderInterface $mailBuilder): ContactMailTypePlugin
+    protected function setHtmlTemplate(MailBuilderInterface $mailBuilder)
     {
         $mailBuilder->setHtmlTemplate('contact/mail/contact.html.twig');
+
         return $this;
     }
 
@@ -75,9 +78,10 @@ class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInte
      *
      * @return $this
      */
-    protected function setTextTemplate(MailBuilderInterface $mailBuilder): ContactMailTypePlugin
+    protected function setTextTemplate(MailBuilderInterface $mailBuilder)
     {
         $mailBuilder->setTextTemplate('contact/mail/contact.text.twig');
+
         return $this;
     }
 
@@ -86,9 +90,10 @@ class ContactMailTypePlugin extends AbstractPlugin implements MailTypePluginInte
      *
      * @return $this
      */
-    protected function setSender(MailBuilderInterface $mailBuilder): ContactMailTypePlugin
+    protected function setSender(MailBuilderInterface $mailBuilder)
     {
         $mailBuilder->setSender($mailBuilder->getMailTransfer()->getContactMailRequest()->getMail(), $mailBuilder->getMailTransfer()->getContactMailRequest()->getName());
+
         return $this;
     }
 }

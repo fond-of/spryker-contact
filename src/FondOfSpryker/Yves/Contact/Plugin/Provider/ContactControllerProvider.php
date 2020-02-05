@@ -2,12 +2,12 @@
 
 namespace FondOfSpryker\Yves\Contact\Plugin\Provider;
 
-use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
 use Silex\Application;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\AbstractYvesControllerProvider;
 
 class ContactControllerProvider extends AbstractYvesControllerProvider
 {
-    const CONTACTFORM_INDEX = 'contact-index';
+    public const CONTACTFORM_INDEX = 'contact-index';
 
     /**
      * @param \Silex\Application $app

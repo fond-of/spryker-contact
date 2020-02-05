@@ -22,6 +22,7 @@ class LocaleTransfer extends AbstractTransfer
     public function setLocaleName($localeName)
     {
         $this->localeName = $localeName;
+
         return $this;
     }
 

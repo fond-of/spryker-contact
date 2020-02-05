@@ -1,4 +1,5 @@
 <?php
+
 namespace FondOfSpryker\Yves\Contact;
 
 use FondOfSpryker\Yves\Contact\Form\FormFactory;

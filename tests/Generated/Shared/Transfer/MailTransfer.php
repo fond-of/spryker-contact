@@ -9,13 +9,13 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
  */
 class MailTransfer extends AbstractTransfer
 {
-    const CONTACT_MAIL_REQUEST = 'contactMailRequest';
+    public const CONTACT_MAIL_REQUEST = 'contactMailRequest';
 
-    const TYPE = 'type';
+    public const TYPE = 'type';
 
-    const SENDER = 'sender';
+    public const SENDER = 'sender';
 
-    const LOCALE = 'locale';
+    public const LOCALE = 'locale';
 
     /**
      * @var \Generated\Shared\Transfer\ContactMailRequestTransfer
@@ -37,9 +37,10 @@ class MailTransfer extends AbstractTransfer
      *
      * @return $this
      */
-    public function setContactMailRequest(ContactMailRequestTransfer $contactMailRequest = null)
+    public function setContactMailRequest(?ContactMailRequestTransfer $contactMailRequest = null)
     {
         $this->contactMailRequest = $contactMailRequest;
+
         return $this;
     }
 
@@ -76,7 +77,7 @@ class MailTransfer extends AbstractTransfer
      *
      * @return $this
      */
-    public function setLocale(LocaleTransfer $locale = null)
+    public function setLocale(?LocaleTransfer $locale = null)
     {
         $this->locale = $locale;
         $this->modifiedProperties[self::LOCALE] = true;
